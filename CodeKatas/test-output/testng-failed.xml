@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="fizzBuzz.FizzBuzzTest">
+        <methods>
+          <include name="everyNumberDivisableBy3IsBuzz"/>
+          <include name="everyNumberDivisableBy5IsBuzz"/>
+          <include name="everyNumberDivisableBy3And5IsFizzBuzz"/>
+          <include name="anyNumberWithA3IsFizz"/>
+          <include name="anyNumberWith3And5IsFizzBuzz"/>
+          <include name="anyNumberWithA5IsBuzz"/>
+        </methods>
+      </class> <!-- fizzBuzz.FizzBuzzTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
