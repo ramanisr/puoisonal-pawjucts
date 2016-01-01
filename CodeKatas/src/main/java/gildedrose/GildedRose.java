@@ -1,12 +1,14 @@
 package gildedrose;
 
+import java.util.ArrayList;
+
 import gildedrose.items.Item;
 import gildedrose.items.UpdateableItem;
 
-class GildedRose {
-	Item[] items;
+public class GildedRose {
+	ArrayList<Item> items;
 
-	public GildedRose(Item[] items) {
+	public GildedRose(ArrayList<Item> items) {
 		this.items = items;
 	}
 	
@@ -17,4 +19,7 @@ class GildedRose {
 		}
 	}
 	
+	public ArrayList<Item> getItems() {
+		return items;
+	}
 }

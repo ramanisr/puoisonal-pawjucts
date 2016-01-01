@@ -1,8 +1,10 @@
 package gildedrose;
 
+import java.util.ArrayList;
+
 import gildedrose.items.AgedBrie;
 import gildedrose.items.BackstagePasses;
-import gildedrose.items.Conjures;
+import gildedrose.items.Conjured;
 import gildedrose.items.ConstantDegradeItem;
 import gildedrose.items.Item;
 import gildedrose.items.Sulfuras;
@@ -11,17 +13,16 @@ public class TextTestFixture {
     public static void main(String[] args) {
         System.out.println("OMGHAI!");
 
-        Item[] items = new Item[] {
-                new ConstantDegradeItem("+5 Dexterity Vest", 10, 20), //
-                new AgedBrie("Aged Brie", 2, 0), //
-                new ConstantDegradeItem("Elixir of the Mongoose", 5, 7), //
-                new Sulfuras("Sulfuras, Hand of Ragnaros", 0, 80), //
-                new Sulfuras("Sulfuras, Hand of Ragnaros", -1, 80),
-                new BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 15, 20),
-                new BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-                new BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 5, 49),
-                // this conjured item does not work properly yet
-                new Conjures("Conjured Mana Cake", 3, 6) };
+        ArrayList<Item> items = new  ArrayList<Item>();
+
+        items.add(new ConstantDegradeItem("+5 Dexterity Vest", 10, 20));
+        items.add(new AgedBrie("Aged Brie", 2, 0));
+        items.add(new ConstantDegradeItem("Elixir of the Mongoose", 5, 7));
+        items.add(new Sulfuras("Sulfuras, Hand of Ragnaros", 0, 80));
+        items.add(new BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 15, 20));
+        items.add(new BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 10, 49));
+        items.add(new BackstagePasses("Backstage passes to a TAFKAL80ETC concert", 5, 49));
+        items.add(new Conjured("Conjured Mana Cake", 3, 6) );
 
         GildedRose app = new GildedRose(items);
 
