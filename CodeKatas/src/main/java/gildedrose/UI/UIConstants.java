@@ -12,5 +12,4 @@ public class UIConstants {
 	static String CHOICES = "\nPress one to add item\nPress two to remove item\nPress three to advance to the next date\nPress 4 to display inventory\nPress x to exit";
 	static String INVALID_CHOICE = "Choice is invalid, try again";
 
-
 }

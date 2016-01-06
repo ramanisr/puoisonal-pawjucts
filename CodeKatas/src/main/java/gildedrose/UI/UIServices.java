@@ -16,92 +16,77 @@ public class UIServices {
 
 	private static Scanner scanner;
 	private static GildedRose gildedRose;
-	
-	public UIServices(){
+
+	public UIServices() {
 		gildedRose = new GildedRose(new ArrayList<Item>());
 		scanner = new Scanner(System.in);
 	}
-	
+
 	public void awaitUserAction() {
-		
-		String inputCommand = scanner.nextLine();		
+
+		String inputCommand = scanner.nextLine();
 		while (!inputCommand.equals(UIConstants.EXIT_KEY)) {
-			if(inputCommand.equals(UIConstants.ADD_KEY))
-			{
+			if (inputCommand.equals(UIConstants.ADD_KEY))
 				addItem();
-			}
-			
-			if(inputCommand.equals(UIConstants.DELETE_KEY))
-			{
-				System.out.println("Enter Item Name to delete");
-				deleteItem(gildedRose.getItems(), scanner.nextLine());
-			}
-		
-			if(inputCommand.equals(UIConstants.ADVANCE_DAY_KEY))
-			{
+
+			if (inputCommand.equals(UIConstants.DELETE_KEY))
+				deleteItem(gildedRose.getItems());
+
+			if (inputCommand.equals(UIConstants.ADVANCE_DAY_KEY))
 				gildedRose.updateQuality();
-				System.out.println("Advanced to the next day");
-			}
-			
-			if(inputCommand.equals(UIConstants.DISPLAY_INVENTORY_KEY))
-			{
-				for(Item item : gildedRose.getItems()){
-					System.out.println(item.name + " :: Quantity - " + 
-							item.quality + " :: Sellin - " + item.sellIn);
-				}
-			}
-			
+
+			if (inputCommand.equals(UIConstants.DISPLAY_INVENTORY_KEY))
+				gildedRose.displayInventory();
+
 			inputCommand = scanner.nextLine();
 			printOptions();
 
 		}
 	}
-	
+
 	// delete a given item. Identified by name
-	public void deleteItem(ArrayList<Item> items, String itemName) {
+	public void deleteItem(ArrayList<Item> items) {
+		System.out.println("Enter Item Name to delete");
+		String itemName = scanner.nextLine();
 		Boolean found = false;
-		for(Item item : items) {
-			if(item.name.equals(itemName)){
+		for (Item item : items) {
+			if (item.name.equals(itemName)) {
 				items.remove(item);
-				found=true;
+				found = true;
+				if (!(items.size() > 0))
+					break;
 			}
 		}
-		if(!found)
-			System.out.println("Iten named " + itemName + " not found");
+		if (!found)
+			System.out.println("Item named " + itemName + " not found");
+		else
+			System.out.println("Item " + itemName + " removed");
+
 	}
-	
-	//print intro
+
+	// print intro
 	public void printIntro() {
 		System.out.println(UIConstants.INTRO);
 		printOptions();
 	}
 
-	//print the options for user to choose 
-	public void printOptions(){
+	// print the options for user to choose
+	public void printOptions() {
 		System.out.println(UIConstants.CHOICES);
 	}
-	
+
 	// resolve the item type into the correct object
-	public Object resolveItemType(String itemName,int sellIn,int quality) {
-		
-		if(itemName.equals(Constants.AGED_BRIE))
-		{
+	public Object resolveItemType(String itemName, int sellIn, int quality) {
+
+		if (itemName.equals(Constants.AGED_BRIE)) {
 			return new AgedBrie(itemName, sellIn, quality);
-		}
-		else if(itemName.equals(Constants.BACKSTAGE_PASSES))
-		{
+		} else if (itemName.equals(Constants.BACKSTAGE_PASSES)) {
 			return new BackstagePasses(itemName, sellIn, quality);
-		}
-		else if(itemName.equals(Constants.CONJURED))
-		{
+		} else if (itemName.equals(Constants.CONJURED)) {
 			return new Conjured(itemName, sellIn, quality);
-		}
-		else if(itemName.equals(Constants.SULFURAS))
-		{
+		} else if (itemName.equals(Constants.SULFURAS)) {
 			return new Sulfuras(itemName, sellIn, quality);
-		}
-		else
-		{
+		} else {
 			return new UpdateableItem(itemName, sellIn, quality);
 		}
 	}
@@ -116,6 +101,7 @@ public class UIServices {
 		quality = scanner.nextInt();
 		System.out.println("Enter days to sell in");
 		sellin = scanner.nextInt();
-		gildedRose.getItems().add(new BackstagePasses(itemName, sellin, quality));
+		gildedRose.getItems().add(
+				new BackstagePasses(itemName, sellin, quality));
 	}
 }

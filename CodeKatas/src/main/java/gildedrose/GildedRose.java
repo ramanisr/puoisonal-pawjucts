@@ -17,6 +17,14 @@ public class GildedRose {
 			if(item instanceof UpdateableItem)
 				((UpdateableItem)(item)).updateQuality();
 		}
+		System.out.println("Advanced to the next day");
+	}
+	
+	public void displayInventory() {
+		for(Item item : items){
+			System.out.println(item.name + " :: Quantity - " + 
+					item.quality + " :: Sellin - " + item.sellIn);
+		}
 	}
 	
 	public ArrayList<Item> getItems() {
