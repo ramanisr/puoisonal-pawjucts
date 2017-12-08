@@ -13,6 +13,13 @@ public class StringCalculatorTest {
 	}
 	
 	@Test
+	public void addingEmptyStringReturnsZeroAgainAgain() throws Exception 
+	{
+		Assert.assertEquals(StringCalculator.add(""), 0);
+	}
+	
+	
+	@Test
 	public void addingASingleNumberReturnsTheSameNumber() throws Exception {
 		Assert.assertEquals(StringCalculator.add("5"), 5);
 	}
